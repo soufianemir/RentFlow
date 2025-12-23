@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RentFlow — Dashboard</title>
+    <meta name="description" content="Gestion locative premium — dashboard, baux, périodes, documents, quittances." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app" id="app">
+      <!-- Background -->
+      <div class="bg">
+        <div class="bg__orb bg__orb--1"></div>
+        <div class="bg__orb bg__orb--2"></div>
+        <div class="bg__grid"></div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="sidebar" aria-label="Navigation principale">
+        <div class="sidebar__top">
+          <a class="brand" href="#" aria-label="RentFlow">
+            <span class="brand__logo" aria-hidden="true">⌂</span>
+            <span class="brand__name">RentFlow</span>
+          </a>
+
+          <nav class="nav">
+            <button class="nav__item is-active" data-view="dashboard">
+              <span class="nav__icon">▦</span> Dashboard
+            </button>
+            <button class="nav__item" data-view="leases">
+              <span class="nav__icon">🗂</span> Leases
+            </button>
+            <button class="nav__item" data-view="periods">
+              <span class="nav__icon">🗓</span> Periods
+            </button>
+            <button class="nav__item" data-view="processes">
+              <span class="nav__icon">⚙︎</span> Processes
+            </button>
+            <button class="nav__item" data-view="settings">
+              <span class="nav__icon">☼</span> Settings
+            </button>
+          </nav>
+        </div>
+
+        <div class="sidebar__bottom">
+          <button class="btn btn--ghost w-full" id="logoutBtn">⟵ Log out</button>
+        </div>
+      </aside>
+
+      <!-- Main -->
+      <main class="main">
+        <!-- Topbar -->
+        <header class="topbar">
+          <div class="search">
+            <span class="search__icon">⌕</span>
+            <input id="searchInput" class="search__input" placeholder="Search..." />
+          </div>
+
+          <div class="topbar__actions">
+            <span class="pill">BETA</span>
+            <button class="iconbtn" id="themeBtn" aria-label="Basculer thème">
+              <span id="themeIcon">◐</span>
+            </button>
+            <button class="iconbtn" aria-label="Notifications">
+              <span>🔔</span>
+            </button>
+          </div>
+        </header>
+
+        <!-- Content -->
+        <section class="content">
+          <!-- Dashboard -->
+          <div class="view is-visible" id="view-dashboard">
+            <div class="hero">
+              <h1 class="h1">Welcome back <span class="wave">👋</span></h1>
+              <p class="muted">Vue synthétique (données mock) — design premium, responsive, ultra fluide.</p>
+            </div>
+
+            <div class="cards">
+              <article class="card metric">
+                <div class="metric__head">
+                  <span class="metric__title">Total Owed</span>
+                </div>
+                <div class="metric__value">€5,200.00</div>
+                <div class="metric__delta up">+2.5% <span class="muted">from last month</span></div>
+              </article>
+
+              <article class="card metric">
+                <div class="metric__head">
+                  <span class="metric__title">Total Paid</span>
+                </div>
+                <div class="metric__value">€3,750.00</div>
+                <div class="metric__delta up">+3.2% <span class="muted">from last month</span></div>
+              </article>
+
+              <article class="card metric">
+                <div class="metric__head">
+                  <span class="metric__title">Late Payments</span>
+                  <span class="dot dot--red" title="Overdue"></span>
+                </div>
+                <div class="metric__value">€720.00</div>
+                <div class="metric__delta">
+                  <span class="dot dot--red"></span> <strong>2</strong> <span class="muted">Overdue</span>
+                </div>
+              </article>
+            </div>
+
+            <div class="panel">
+              <div class="panel__head">
+                <h2 class="h2">Recent Alerts</h2>
+                <button class="btn btn--ghost" id="viewAllBtn">View all →</button>
+              </div>
+
+              <div class="table" role="table" aria-label="Recent Alerts">
+                <div class="table__row table__row--head" role="row">
+                  <div role="columnheader">Title</div>
+                  <div role="columnheader">Lease</div>
+                  <div role="columnheader">Status</div>
+                  <div role="columnheader" class="right">Date</div>
+                </div>
+
+                <div class="table__body" id="alertsTable"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Other views (simple placeholders) -->
+          <div class="view" id="view-leases">
+            <div class="hero">
+              <h1 class="h1">Leases</h1>
+              <p class="muted">À brancher plus tard à ta vraie base. Pour l’instant : structure + UX.</p>
+            </div>
+            <div class="panel">
+              <h2 class="h2">Quick actions</h2>
+              <div class="actions">
+                <button class="btn" id="importLeaseBtn">Import lease</button>
+                <button class="btn btn--secondary" id="createLeaseBtn">Create lease</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="view" id="view-periods">
+            <div class="hero">
+              <h1 class="h1">Periods</h1>
+              <p class="muted">Chaque mois = période indépendante (facture, paiements, documents, quittance).</p>
+            </div>
+            <div class="panel">
+              <h2 class="h2">This month</h2>
+              <p class="muted">Exemple : Décembre 2025 — Facture générée, statut, reste à payer, pièces jointes.</p>
+              <button class="btn" id="openPeriodBtn">Open period</button>
+            </div>
+          </div>
+
+          <div class="view" id="view-processes">
+            <div class="hero">
+              <h1 class="h1">Processes</h1>
+              <p class="muted">Vue “workflow” : états, retries, logs, alerting (à implémenter ensuite).</p>
+            </div>
+            <div class="panel">
+              <h2 class="h2">Process list</h2>
+              <div class="chips">
+                <span class="chip">Invoice Generation</span>
+                <span class="chip">Payment Matching</span>
+                <span class="chip">Receipt Issuing</span>
+                <span class="chip">Reminder Email</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="view" id="view-settings">
+            <div class="hero">
+              <h1 class="h1">Settings</h1>
+              <p class="muted">Dark/Light, branding, notifications, RGPD, sécurité…</p>
+            </div>
+            <div class="panel">
+              <h2 class="h2">Appearance</h2>
+              <button class="btn btn--secondary" id="themeBtn2">Toggle theme</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
