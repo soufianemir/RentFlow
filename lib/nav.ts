@@ -5,9 +5,11 @@ export type NavItem = {
 };
 
 export const navItems: NavItem[] = [
-  { href: "/", label: "Tableau de bord", icon: "layout-dashboard" },
-  { href: "/reservations", label: "Réservations", icon: "calendar-clock" },
-  { href: "/proprietes", label: "Propriétés", icon: "building-2" },
-  { href: "/finances", label: "Finances", icon: "wallet" },
-  { href: "/equipe", label: "Équipe", icon: "users" }
+  { href: "/tableau-de-bord", label: "Tableau de bord", icon: "layout-dashboard" },
+  { href: "/baux", label: "Baux", icon: "file-digit" },
+  { href: "/factures", label: "Factures", icon: "receipt-euro" },
+  { href: "/quittances", label: "Quittances", icon: "receipt" },
+  { href: "/documents", label: "Documents", icon: "folder" },
+  { href: "/parametres", label: "Paramètres", icon: "settings" },
+  { href: "/aide", label: "Aide", icon: "life-buoy" }
 ];
