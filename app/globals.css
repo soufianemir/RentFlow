@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 210 33% 99%;
+  --foreground: 222 47% 11%;
+  --muted: 214 31% 90%;
+  --muted-foreground: 215 20% 41%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 47% 11%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+  --border: 214 32% 91%;
+  --input: 214 32% 91%;
+  --primary: 222 85% 55%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222 47% 11%;
+  --accent: 222 100% 65%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 222 85% 55%;
+  --radius: 12px;
+}
+
+.dark {
+  --background: 222 47% 10%;
+  --foreground: 210 40% 98%;
+  --muted: 217 33% 17%;
+  --muted-foreground: 215 20% 65%;
+  --popover: 222 47% 10%;
+  --popover-foreground: 210 40% 98%;
+  --card: 222 47% 13%;
+  --card-foreground: 210 40% 98%;
+  --border: 217 33% 20%;
+  --input: 217 33% 20%;
+  --primary: 217 91% 60%;
+  --primary-foreground: 222 47% 10%;
+  --secondary: 222 47% 13%;
+  --secondary-foreground: 210 40% 98%;
+  --accent: 194 88% 68%;
+  --accent-foreground: 222 47% 10%;
+  --destructive: 0 62% 55%;
+  --destructive-foreground: 222 47% 98%;
+  --ring: 217 91% 60%;
+}
+
+* {
+  @apply border-border;
+}
+
+body {
+  @apply min-h-screen bg-background text-foreground antialiased bg-blueprint bg-fixed bg-center;
+  background-size: cover;
+}
+
+a {
+  @apply text-foreground;
+}
+
+.glass-card {
+  @apply bg-white/70 dark:bg-white/5 backdrop-blur-xl border border-white/50 dark:border-white/10 shadow-[0_25px_80px_-40px_rgba(15,23,42,0.4)] dark:shadow-[0_15px_60px_-35px_rgba(0,0,0,0.7)];
+}
+
+.glass-button {
+  @apply relative overflow-hidden rounded-full border border-white/30 dark:border-white/10 bg-white/70 dark:bg-slate-900/40 px-5 py-2 text-sm font-medium text-slate-900 dark:text-slate-50 shadow-[0_10px_40px_-25px_rgba(15,23,42,0.7)] transition duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[0_20px_50px_-25px_rgba(14,165,233,0.5)];
+}
+
+.glass-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(255,255,255,0.8), rgba(255,255,255,0));
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.glass-button:hover::before {
+  opacity: 0.25;
+}
+
+.card-grid {
+  @apply grid gap-6 md:grid-cols-3;
+}
+
+.section-grid {
+  @apply grid gap-8 md:grid-cols-3;
+}
